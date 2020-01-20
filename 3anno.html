@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Portfolio</title>
+	<a href="index.html">Home</a>
+	<a href="4anno.html">Quarto anno</a>
+	<a href="5anno.html">Quinto anno</a>
+  <style>
+    html,
+    body {
+      margin: 10;
+    }
+
+    .wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .bg {
+      position: absolute;
+    }
+
+    .bg h1 {
+      position: absolute;
+      padding: 0 1rem;
+      color: white;
+    }
+
+    .bg img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .bg.slideup {
+      top: 100vh;
+      transition: top 400ms;
+    }
+
+    .bg.slideup.active {
+      top: 0;
+    }
+
+    .bg.slideleft {
+      left: 100vw;
+      transition: left 400ms;
+    }
+
+    .bg.slideleft.active {
+      left: 0;
+    }
+
+    .bg.slideright {
+      right: 100vw;
+      transition: right 400ms;
+    }
+
+    .bg.slideright.active {
+      right: 0;
+    }
+
+    .bg.slidedown {
+      bottom: 100vh;
+      transition: bottom 400ms;
+    }
+
+    .bg.slidedown.active {
+      bottom: 0;
+    }
+
+    #slideup {
+      position: fixed;
+      bottom: 0;
+      left: 50vw;
+      transform: translate(-50%);
+      z-index: 2;
+    }
+
+    #slideleft {
+      position: fixed;
+      right: 0;
+      top: 50vh;
+      transform: translate(0, -50%);
+      z-index: 2;
+    }
+
+    #slideright {
+      position: fixed;
+      left: 0;
+      top: 50vh;
+      transform: translate(0, -50%);
+      z-index: 2;
+    }
+
+    #slidedown {
+      position: fixed;
+      top: 0;
+      right: 50vw;
+      transform: translate(50%);
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="slideleft">Slide left</button>
+  <button id="slideright">Slide right</button>
+
+  <div class="wrapper">
+
+    <div class="bg">
+      <img src="1.jpg" alt="">
+    </div>
+
+    <div id="baz" class="bg slideleft">
+      <img src="4.jpg" alt="">
+    </div>
+
+    <div id="qux" class="bg slideright">
+      <img src="5.jpg" alt="">
+    </div>
+
+  </div>
+  <script>
+
+    const slideleft = document.querySelector("#slideleft");
+    const baz = document.querySelector("#baz");
+    slideleft.onclick = function () {
+      const active = baz.classList.toggle("active");
+      slideleft.innerHTML = active ? "Slide right" : "Slide left";
+    };
+
+    const slideright = document.querySelector("#slideright");
+    const qux = document.querySelector("#qux");
+    slideright.onclick = function () {
+      const active = qux.classList.toggle("active");
+      slideright.innerHTML = active ? "Slide left" : "Slide right";
+    };
+
+  </script>
+</body>
+
+</html>
